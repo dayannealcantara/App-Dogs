@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext } from 'react';
-import { USER_GET } from '../../api';
+import { USER_POST } from '../../api';
 import Input from '../../Components/Form/Input';
 import Button from '../../Components/Form/Button';
 import Error from '../../Components/Helper/Error';
@@ -12,12 +12,13 @@ import useFetch from '../../Hooks/useFetch'
    const username = useForm();
    const email = useForm('email')
    const password = useForm();
+
    const { userLogin} = useContext(UserContext);
    const { loading, error, request} = useFetch()
    
    async function handleSubmit(e) {
      e.preventDefault();
-     const { url, options} = USER_GET({
+     const { url, options} = USER_POST({
        username: username.value,
        email:email.value,
        password:password.value,
