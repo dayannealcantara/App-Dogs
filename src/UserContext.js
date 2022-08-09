@@ -33,6 +33,7 @@ export const UserStroge =({children}) =>{
   }
   
   async function userLogin(username, password) {
+    
     try{
       setError(null);
       setLoading(true);
@@ -53,6 +54,7 @@ export const UserStroge =({children}) =>{
 
 useEffect(() => {
   async function autoLogin() {
+    console.log(autoLogin)
     const token = window.localStorage.getItem('token')
     if(token){
       try {
@@ -72,6 +74,6 @@ useEffect(() => {
 autoLogin()
 }, [userLogout])
   return(
-    <UserContext.Provider value={{userLogin, data}}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ userLogin, userLogout, data, error, loading, login }}>{children}</UserContext.Provider>
   )
 }
